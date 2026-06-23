@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segera Hadir - Website Kami</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efek cahaya dekoratif pada latar belakang */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(99, 102, 241, 0.15);
+            border-radius: 50%;
+            top: 10%;
+            left: 15%;
+            filter: blur(100px);
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(219, 39, 119, 0.1);
+            border-radius: 50%;
+            bottom: 10%;
+            right: 15%;
+            filter: blur(120px);
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            z-index: 10;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        h1 span {
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.description {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            line-height: 1.6;
+        }
+
+        /* Gaya Hitung Mundur (Countdown) */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 20px;
+            border-radius: 16px;
+            min-width: 100px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* Form Langganan */
+        .subscription-form {
+            max-width: 500px;
+            margin: 0 auto 60px auto;
+        }
+
+        .form-group {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px;
+            border-radius: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group:focus-within {
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+        }
+
+        input[type="email"] {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 12px 24px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        input[type="email"]::placeholder {
+            color: #475569;
+        }
+
+        button {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Tautan Media Sosial */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .social-icon:hover {
+            color: #6366f1;
+        }
+
+        /* Desain Responsif */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .countdown-item {
+                min-width: 75px;
+                padding: 12px;
+            }
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+            .form-group {
+                flex-direction: column;
+                background: transparent;
+                border: none;
+                padding: 0;
+                gap: 12px;
+            }
+            input[type="email"] {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 30px;
+                width: 100%;
+                text-align: center;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">BRANDKITA</div>
+        
+        <h1>Sesuatu yang Besar<br><span>Sedang Bersiap Datang</span></h1>
+        
+        <p class="description">Kami sedang bekerja keras di balik layar untuk memberikan Anda pengalaman digital terbaik yang pernah ada. Masukkan email Anda untuk mendapatkan notifikasi eksklusif saat kami resmi meluncur.</p>
+        
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Hari</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Jam</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Menit</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Detik</span>
+            </div>
+        </div>
+        
+        <div class="subscription-form">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Terima kasih! Kami akan memberi tahu Anda segera.');">
+                <div class="form-group">
+                    <input type="email" placeholder="Masukkan alamat email Anda..." required>
+                    <button type="submit">Beri Tahu Saya</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-icon">Instagram</a>
+            <a href="#" class="social-icon">Twitter</a>
+            <a href="#" class="social-icon">LinkedIn</a>
+        </div>
+    </div>
+
+    <script>
+        // Mengatur target tanggal hitung mundur (contoh: 30 hari dari sekarang)
+        const countdownDate = new Date();
+        countdownDate.setDate(countdownDate.getDate() + 30);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Perhitungan waktu untuk hari, jam, menit, dan detik
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Tampilkan hasil ke elemen HTML dengan format dua digit
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // Jika hitungan mundur selesai
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById("countdown").innerHTML = "<h2 style='color: #6366f1;'>Kami Telah Meluncur!</h2>";
+            }
+        }
+
+        // Perbarui countdown setiap 1 detik
+        const interval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Jalankan sekali di awal
+    </script>
+</body>
+</html>
